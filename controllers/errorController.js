@@ -34,15 +34,14 @@ const sendErrorDev = (err, req, res) => {
       message: err.message,
       stack: err.stack,
     });
-  } 
-  
+  }
+
   //B)REDNERED WEBSITE
-  console.error('ERROR', err)
+  console.error('ERROR', err);
   return res.status(err.statusCode).render('error', {
     title: 'something went wrong',
     msg: err.message,
   });
-  
 };
 
 const sendErrorProd = (err, req, res) => {
@@ -70,15 +69,13 @@ const sendErrorProd = (err, req, res) => {
       title: 'something went wrong',
       msg: err.message,
     });
-
-  } 
+  }
   //B)programming or other unknown error:don't leak error details
-    console.error('ERROR', err);
-    return res.status(err.statusCode).render('error', {
-      title: 'something went wrong',
-      msg: 'Please try again later',
-    });
-  
+  console.error('ERROR', err);
+  return res.status(err.statusCode).render('error', {
+    title: 'something went wrong',
+    msg: 'Please try again later',
+  });
 };
 
 module.exports = (err, req, res, next) => {
@@ -90,7 +87,7 @@ module.exports = (err, req, res, next) => {
   } else if (process.env.NODE_ENV === 'production') {
     let error = { ...err, name: err.name };
     error.message = err.message;
-    
+
     if (error.name === 'CastError') error = handleCastErrorDB(error);
     if (error.code === 11000) error = handleDublicateFieldsDB(error);
     if (error.name === 'ValidationError')

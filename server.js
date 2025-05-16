@@ -1,6 +1,9 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const dns = require('dns');
+
+dns.setServers(['1.1.1.1', '8.8.8.8']);
 
 process.on('uncaughtException', (err) => {
   console.log('UNCAUGHT EXCEPTION! shutting down..');
