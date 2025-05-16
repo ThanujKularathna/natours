@@ -1,0 +1,8 @@
+{
+  "files.autoSave": "afterDelay",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnType": true,
+  "notebook.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.tabSize": 2
+}
