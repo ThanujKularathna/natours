@@ -83,7 +83,6 @@ exports.logout = (req, res, next) => {
 };
 
 exports.protect = catchAsync(async (req, res, next) => {
-  console.log('working protect');
   // console.log(req.headers.authorization);
   //1)Getting token and check if it's there
 
@@ -98,7 +97,6 @@ exports.protect = catchAsync(async (req, res, next) => {
     token = req.cookies.jwt;
   }
 
-  console.log(token);
 
   if (!token) {
     return next(new AppError('you are not logged in! please log in', 401));

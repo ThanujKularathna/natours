@@ -52,7 +52,6 @@ exports.getMyTours = catchAsync(async (req, res, next) => {
   //2) find tours with the returned IDs
   const tourIDs = bookings.map((el) => el.tour);
   // const tourIDs = bookings.map((el) => el.tour.id); both works beacuse of $in operator
-  console.log(tourIDs);
   const tours = await Tour.find({ _id: { $in: tourIDs } });
 
   res.status(200).render('overview', {

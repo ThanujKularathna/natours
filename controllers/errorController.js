@@ -6,7 +6,6 @@ const handleCastErrorDB = (err) => {
 };
 
 const handleDublicateFieldsDB = (err) => {
-  console.log(err);
   const value = err.keyValue.name;
   // const value = err.errmsg.match(/(["'])(\\?.)*?\1/);
   const message = `Dublicate field value "${value}" please use another value`;
@@ -27,7 +26,6 @@ const handleJWTExpireError = (err) =>
   new AppError('your token has been expired please log again', 401);
 
 const sendErrorDev = (err, req, res) => {
-  console.log(err);
   //A)API
   if (req.originalUrl.startsWith('/api')) {
     return res.status(err.statusCode).json({
@@ -39,6 +37,7 @@ const sendErrorDev = (err, req, res) => {
   } 
   
   //B)REDNERED WEBSITE
+  console.error('ERROR', err)
   return res.status(err.statusCode).render('error', {
     title: 'something went wrong',
     msg: err.message,

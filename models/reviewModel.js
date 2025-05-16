@@ -99,14 +99,13 @@ reviewSchema.post('save', function () {
 // reviewSchema.post('findOneAndUpdate', async function () {
 //   // await this.findOne().clone();  does NOT work here query has already executed
 //   await this.r.constructor.calcAverageRatings(this.r.tour);
-//   console.log('running');
 // });
 
 //after pre post is not executed I checked that
 reviewSchema.pre(/^findOneAnd/, async function (next) {
   //in here this keyword is refere to current query
   this.r = await this.findOne().clone(); //findone() find the document and save into the r varible before it's modified
-  console.log(this.r);
+  // console.log(this.r);
   next();
 });
 
@@ -115,10 +114,10 @@ reviewSchema.post(/^findOneAnd/, async function () {
   await this.r.constructor.calcAverageRatings(this.r.tour);
 });
 
-reviewSchema.post(/^find/, (docs, next) => {
-  console.log(`query took ${Date.now()}`);
-  next();
-});
+// reviewSchema.post(/^find/, (docs, next) => {
+//   console.log(`query took ${Date.now()}`);
+//   next();
+// });
 
 const Review = mongoose.model('Review', reviewSchema);
 

@@ -32,7 +32,6 @@ class APIFeatures {
   //get fields what we need
   limitFields() {
     if (this.queryString.fields) {
-      console.log(this.queryString.fields.split(','));
       const fields = this.queryString.fields.split(',').join(' '); //join make list as one string
       this.query = this.query.select(fields);
       // console.log(fields);
