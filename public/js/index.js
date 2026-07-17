@@ -68,10 +68,10 @@ if (userPasswordForm) {
   });
 }
 
-if (bookBtn){
-  bookBtn.addEventListener('click',e=>{
+if (bookBtn) {
+  bookBtn.addEventListener('click', (e) => {
     e.target.textContent = 'Proccesing...';
-    const {tourId} = e.target.dataset
+    const { tourid: tourId } = e.target.dataset;
     bookTour(tourId);
-  })
+  });
 }
